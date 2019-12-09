@@ -28,7 +28,7 @@ function parseInputs {
   fi
 
   if [ "${INPUT_TF_ACTIONS_SUBCOMMAND}" != "" ]; then
-    tfSubcommand=${INPUT_TF_ACTIONS_SUBCOMMAND}
+    Subcommand=${INPUT_ACTIONS_SUBCOMMAND}
   else
     echo "Input terraform_subcommand cannot be empty"
     exit 1
@@ -112,7 +112,7 @@ function main {
   configureCLICredentials
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
 
-  case "${tfSubcommand}" in
+  case "${Subcommand}" in
     fmt)
       installTerraform
       terraformFmt ${*}
