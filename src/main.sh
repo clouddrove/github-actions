@@ -27,7 +27,7 @@ function parseInputs {
     exit 1
   fi
 
-  if [ "${INPUT_TF_ACTIONS_SUBCOMMAND}" != "" ]; then
+  if [ "${INPUT_ACTIONS_SUBCOMMAND}" != "" ]; then
     Subcommand=${INPUT_ACTIONS_SUBCOMMAND}
   else
     echo "Input terraform_subcommand cannot be empty"
