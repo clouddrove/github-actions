@@ -86,24 +86,21 @@ function installTerraform {
   echo "Successfully unzipped Terraform v${tfVersion}"
 }
 
+#this Function Install
 function installGo {
-  echo "Install Go for terratest"
-  wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh \
- | bash -s -- --version 1.13.2
-  echo "Install Go package fo terratest"
-  go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
+
 }
 
 
 function main {
   # Source the other files to gain access to their functions
   scriptDir=$(dirname ${0})
-  source ${scriptDir}/terraform_fmt.sh
-  source ${scriptDir}/terraform_init.sh
-  source ${scriptDir}/terraform_validate.sh
-  source ${scriptDir}/terraform_plan.sh
-  source ${scriptDir}/terraform_apply.sh
-  source ${scriptDir}/terraform_output.sh
+  source ${scriptDir}/tf_fmt.sh
+  source ${scriptDir}/tf_init.sh
+  source ${scriptDir}/tf_validate.sh
+  source ${scriptDir}/tf_plan.sh
+  source ${scriptDir}/tf_apply.sh
+  source ${scriptDir}/tf_output.sh
   source ${scriptDir}/terratest_go.sh
   source ${scriptDir}/file_upload.sh
   source ${scriptDir}/kuguard.sh
@@ -137,9 +134,8 @@ function main {
       installTerraform
       terraformOutput ${*}
       ;;
-    gotest)
+    terratest)
       installTerraform
-      installGo
       goTest ${*}
       ;;
     file_upload)
@@ -147,7 +143,7 @@ function main {
       fileUpload ${*}
       ;;
     *)
-      echo "Error: Must provide a valid value for terraform_subcommand"
+      echo "Error: Must provide a valid value for subcommand"
       exit 1
       ;;
   esac

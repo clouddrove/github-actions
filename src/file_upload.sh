@@ -2,10 +2,6 @@
 
 set -e
 
-#
-# Input verification
-#
-
 function fileUpload {
   TOKEN="${INPUT_TOKEN}"
   if [ -z "${TOKEN}" ]; then
