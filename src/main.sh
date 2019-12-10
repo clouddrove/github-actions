@@ -86,11 +86,6 @@ function installTerraform {
   echo "Successfully unzipped Terraform v${tfVersion}"
 }
 
-#this Function Install
-function installGo {
-
-}
-
 
 function main {
   # Source the other files to gain access to their functions
