@@ -1,7 +1,6 @@
 #!/bin/bash
 #this is using for terraform  terratest
 function goTest {
-
   # install the terratest dependencies
   echo "Install Go for terratest"
   wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh \
