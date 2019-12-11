@@ -66,6 +66,9 @@ EOF
   fi
 }
 
+function terraformPlan {
+   terraform plan
+}
 function installTerraform {
   url="https://releases.hashicorp.com/terraform/${tfVersion}/terraform_${tfVersion}_linux_amd64.zip"
 
@@ -93,7 +96,7 @@ function main {
   source ${scriptDir}/tf_fmt.sh
   source ${scriptDir}/tf_init.sh
   source ${scriptDir}/tf_validate.sh
-  source ${scriptDir}/tf_plan.sh
+  #source ${scriptDir}/tf_plan.sh
   source ${scriptDir}/tf_apply.sh
   source ${scriptDir}/tf_output.sh
   source ${scriptDir}/terratest_go.sh
