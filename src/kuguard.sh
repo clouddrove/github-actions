@@ -6,7 +6,7 @@ function builBinary {
  | bash -s -- --version 1.13.2
 
     echo "Install gcc, build-base for kuguard"
-    apk add --update --no-cache zip
+    apk add --update --no-cache zip gcc build-base
 
     echo "copy  kuguard"
     cp kuguard -r $HOME/go/src
