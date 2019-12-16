@@ -5,7 +5,9 @@ function builBinary {
     wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh \
  | bash -s -- --version 1.13.2
 
-    apk add go  zip
+    echo "Install gcc, build-base for kuguard"
+    apk add --update --no-cache go gcc build-base
+
     echo "copy  kuguard"
     cp kuguard -r $HOME/go/src
 
