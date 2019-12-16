@@ -1,14 +1,8 @@
 # this is using clouddrve internal tool
 
 function builBinary {
-  echo "Install Go package fo terratest"
-  go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
-    echo "Install Go for kuguard"
-    wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh \
- | bash -s -- --version 1.13.2
-
     echo "Install gcc, build-base for kuguard"
-    apk add --update --no-cache go gcc build-base
+    apk add --update --no-cache gcc build-base zip
 
     echo "copy  kuguard"
     cp kuguard -r $HOME/go/src
