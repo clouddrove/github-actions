@@ -27,8 +27,7 @@ function builBinary {
     echo "Install mousetrap package of go for windows binary"
     go get github.com/inconshreveable/mousetrap
     echo "Build binary for Windows"
-    env GOOS=windows GOACRCH=amd64 go build -o kuguard_windows_amd64.exe/kuguard kuguard
+    env GOOS=windows GOACRCH=amd64 go build -o kuguard_windows_amd64.exe/kuguard.exe kuguard
     echo  "Zip for Windows binary file"
-    zip -r kuguard_windows_amd64.exe.zip kuguard_windows_amd64.exe/kuguard
-
+    zip -r kuguard_windows_amd64.exe.zip kuguard_windows_amd64.exe/kuguard.exe
 }
