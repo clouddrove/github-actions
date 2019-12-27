@@ -27,54 +27,76 @@
 
 ## Usage
 
-###terraform and terratest
+### terraform and terratest
 The most common workflow is to run `terratest` `terraform fmt`, `terraform init`, `terraform validate`, and `terraform plan` on all of the Terraform files in the root of the repository when a pull request is opened or updated. A comment will be posted to the pull request depending on the output of the Terraform subcommand being executed. This workflow can be configured by adding the following content to the GitHub Actions workflow YAML file.
 
 ```yaml
 name: 'Terraform GitHub Actions'
 on:
   - pull_request
+
 jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
     steps:
+
       - name: 'Checkout'
         uses: actions/checkout@master
+
       - name: 'Terraform Format'
         uses: clouddrove/github-actions@master
         with:
-          tf_actions_version: 0.12.13
           actions_subcommand: 'fmt'
-          tf_actions_working_dir: ./_example
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Terraform Init'
+
+      - name: 'Terraform Init fot public-private-subnet'
         uses: clouddrove/github-actions@master
         with:
-          tf_actions_version: 0.12.13
           actions_subcommand: 'init'
-          tf_actions_working_dir: ./_example
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Terraform Validate'
+          tf_actions_working_dir: ./_example/public-private-subnet    
+      
+      - name: Configure AWS Credentials
+        uses: clouddrove/configure-aws-credentials@v1
+        with:
+         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         aws-region: us-east-2      
+     
+      - name: 'Terraform Plan For public-private-subnet'
         uses: clouddrove/github-actions@master
         with:
-          tf_actions_version: 0.12.13
-          actions_subcommand: 'validate'
-          tf_actions_working_dir: ./_example
+          actions_subcommand: 'plan'
+          tf_actions_working_dir: ./_example/public-private-subnet
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Terratest'
+
+      - name: 'Terratest For public-private-subnet'
         uses: clouddrove/github-actions@master
         with:
-          tf_actions_version: 0.12.13
           actions_subcommand: 'terratest'
-          tf_actions_working_dir: ./_test
+          tf_actions_working_dir: ./_test/public-private-subnet
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: 'Terratest For public-subnet'
+        uses: clouddrove/github-actions@master
+        with:
+          actions_subcommand: 'terratest'
+          tf_actions_working_dir: ./_test/public-subnet
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+      - name: 'Slack Notification'
+        uses: clouddrove/action-slack@v2
+        with:
+          status: ${{ job.status }}
+          fields: repo,author
+          author_name: 'Clouddrove'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
+        if: always()
 ```
 
 This was a simplified example showing the basic features of these Terraform GitHub Actions. Please refer to the examples within the `examples` directory for other common workflows.
