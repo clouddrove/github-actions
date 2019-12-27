@@ -1,5 +1,7 @@
 #!/bin/bash
 
 function terraformPlan {
-   terraform plan
+  # Gather the output of `terraform plan`.
+  echo "plan: info: planning Terraform configuration in ${tfWorkingDir}"
+  terraform plan
 }
