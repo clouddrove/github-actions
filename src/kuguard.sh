@@ -3,7 +3,7 @@
 function builBinary {
     echo "Install Go for kuguard"
     wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh \
-   | bash -s -- --version 1.13.2
+   | bash -s -- --version 1.14.6
 
     echo "Install gcc, build-base and zip for kuguard"
     apk add --update --no-cache zip gcc build-base
