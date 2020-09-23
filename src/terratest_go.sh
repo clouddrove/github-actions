@@ -12,8 +12,8 @@ else
   echo "Install Go for terratest"
   echo "installing go version 1.10.3..." 
   apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go 
-  curl -O https://golang.org/dl/go1.15.2.src.tar.gz
-  tar -C /usr/local -xzf go1.15.2.src.tar.gz
+  curl -O https://golang.org/dl/go1.15.0.src.tar.gz
+  tar -C /usr/local -xzf go1.15.0.src.tar.gz
   cd /usr/local/go/src/ 
   ./make.bash 
   export PATH="/usr/local/go/bin:$PATH"
