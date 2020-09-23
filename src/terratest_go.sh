@@ -3,16 +3,16 @@
 function goTest {
 
   echo "install the terratest dependencies"
-  apk add -d --update --no-cache go gcc build-base
+  apk add -d --update --no-cache go curl gcc build-base
 
   echo "Install Go for terratest"
   if [ -x /github/home/.go ]; then
     echo exists
 else
   echo "Install Go for terratest"
-  echo "installing go version 1.4.3..." 
+  echo "installing go version 1.10.3..." 
   apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go 
-  wget -O https://storage.googleapis.com/golang/go1.4.3.linux-amd64.tar.gz 
+  curl -O https://storage.googleapis.com/golang/go1.4.3.linux-amd64.tar.gz
   tar -C /usr/local -xzf go.tgz 
   cd /usr/local/go/src/ 
   ./make.bash 
@@ -23,8 +23,7 @@ else
   go version
   echo starting
   go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
-  echo ending
-
+  echo yes
   echo "Install Go package for terratest"
   go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
 fi
