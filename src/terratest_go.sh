@@ -22,9 +22,7 @@ else
   export PATH=$PATH:$GOPATH/bin 
   
   go version
-  echo starting
-  go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
-  echo yes
+  
   echo "Install Go package for terratest"
   go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
 fi
