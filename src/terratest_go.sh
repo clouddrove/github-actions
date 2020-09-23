@@ -12,8 +12,8 @@ else
   echo "Install Go for terratest"
   echo "installing go version 1.10.3..." 
   apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go 
-  curl -O https://storage.googleapis.com/golang/go1.4.3.linux-amd64.tar.gz
-  tar -C /usr/local -xzf go1.4.3.linux-amd64.tar.gz
+  curl -O https://storage.googleapis.com/golang/go1.10.3.linux-amd64.tar.gz
+  tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
   cd /usr/local/go/src/
   export CGO_ENABLED=0
   ./make.bash 
