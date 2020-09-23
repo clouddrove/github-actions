@@ -21,8 +21,11 @@ else
   export PATH=$PATH:$GOPATH/bin 
   apk del .build-deps 
   go version
-
-  echo "Install Go package fo terratest"
+  echo starting
+  go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
+  echo ending
+  
+  echo "Install Go package for terratest"
   go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
 fi
 
