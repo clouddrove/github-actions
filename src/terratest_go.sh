@@ -10,9 +10,9 @@ function goTest {
     echo exists
 else
   echo "Install Go for terratest"
-  echo "installing go version 1.10.3..." 
+  echo "installing go version 1.4.3..." 
   apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go 
-  wget -O go.tgz https://dl.google.com/go/go1.10.3.src.tar.gz 
+  wget -O https://storage.googleapis.com/golang/go1.4.3.linux-amd64.tar.gz 
   tar -C /usr/local -xzf go.tgz 
   cd /usr/local/go/src/ 
   ./make.bash 
@@ -24,7 +24,7 @@ else
   echo starting
   go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
   echo ending
-  
+
   echo "Install Go package for terratest"
   go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
 fi
