@@ -15,16 +15,17 @@ else
   wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
   wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk
   apk add glibc-2.32-r0.apk
-  echo start
   curl -O https://storage.googleapis.com/golang/go1.10.3.linux-amd64.tar.gz
   tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
   export CGO_ENABLED=0
   export PATH="/usr/local/go/bin:$PATH"
   export GOPATH=/opt/go/ 
   export PATH=$PATH:$GOPATH/bin
-  mkdir /opt/go/bin
+  cd /opt
+  mkdir go
+  cd go 
+  mkdir bin
   source /etc/profile
-  echo sab sahi
   cd /usr/local/go/src
   echo 123
   ./make.bash
