@@ -12,6 +12,7 @@ else
   echo "Install Go for terratest"
   echo "installing go version 1.14.3..." 
   apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go
+  go version
   wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
   wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk
   apk add glibc-2.32-r0.apk
