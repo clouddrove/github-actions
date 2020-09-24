@@ -13,15 +13,15 @@ else
   echo "installing go version 1.14.3..." 
   apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go 
   echo start
-  curl -O https://storage.googleapis.com/golang/go1.14.3.linux-amd64.tar.gz
-  tar -C /usr/local -xzf go1.14.3.linux-amd64.tar.gz
+  curl -O https://storage.googleapis.com/golang/go1.15.3.linux-amd64.tar.gz
+  tar -C /usr/local -xzf go1.15.3.linux-amd64.tar.gz
   export CGO_ENABLED=0
   export PATH="/usr/local/go/bin:$PATH"
   export GOPATH=/opt/go/ 
   export PATH=$PATH:$GOPATH/bin
   echo sab sahi
   cd /usr/local/go/src
-  ./make.bash 
+  ./all.bash
   go version
   echo "Install dep"
   curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
