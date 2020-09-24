@@ -15,16 +15,12 @@ else
   echo start
   curl -O https://storage.googleapis.com/golang/go1.14.3.linux-amd64.tar.gz
   tar -C /usr/local -xzf go1.14.3.linux-amd64.tar.gz
-  pwd 
-  ls -la
-  cd /usr/local/go/src
-  cd 
-  ls -la
   export CGO_ENABLED=0
   export PATH="/usr/local/go/bin:$PATH"
   export GOPATH=/opt/go/ 
   export PATH=$PATH:$GOPATH/bin
-  source ~/.profile
+  echo sab sahi
+  cd /usr/local/go/src
   ./make.bash 
   go version
   echo "Install dep"
