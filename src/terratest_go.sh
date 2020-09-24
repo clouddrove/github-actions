@@ -19,6 +19,8 @@ else
   export PATH="/usr/local/go/bin:$PATH"
   export GOPATH=/opt/go/ 
   export PATH=$PATH:$GOPATH/bin
+  cd
+  source ~/.profile
   echo sab sahi
   cd /usr/local/go/src
   echo 123
