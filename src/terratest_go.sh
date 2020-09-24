@@ -15,14 +15,20 @@ else
   echo start
   curl -O https://storage.googleapis.com/golang/go1.14.3.linux-amd64.tar.gz
   tar -C /usr/local -xzf go1.14.3.linux-amd64.tar.gz
+  pwd 
+  ls -la
   cd /usr/local/go/src/
+  pwd
+  ls -la
   export CGO_ENABLED=0
-  ./make.bash 
   export PATH="/usr/local/go/bin:$PATH"
   export GOPATH=/opt/go/ 
   export PATH=$PATH:$GOPATH/bin
   source ~/.profile
+  ./make.bash 
   go version
+  echo "Install dep"
+  curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   echo "Install Go package for terratest"
   go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
 fi
