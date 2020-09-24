@@ -23,10 +23,8 @@ else
   export PATH="/usr/local/go/bin:$PATH"
   export GOPATH=/opt/go/ 
   export PATH=$PATH:$GOPATH/bin
-
   source ~/.profile
   go version
-  go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
   echo "Install Go package for terratest"
   go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
 fi
