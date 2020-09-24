@@ -16,9 +16,7 @@ else
   curl -O https://storage.googleapis.com/golang/go1.14.3.linux-amd64.tar.gz
   tar -C /usr/local -xzf go1.14.3.linux-amd64.tar.gz
   cd /usr/local/go/src/
-  echo tarfinish
   export CGO_ENABLED=0
-  source ~/.profile
   ./make.bash 
   export PATH="/usr/local/go/bin:$PATH"
   export GOPATH=/opt/go/ 
