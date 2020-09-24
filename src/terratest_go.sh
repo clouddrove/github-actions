@@ -17,7 +17,7 @@ else
   tar -C /usr/local -xzf go1.14.3.linux-amd64.tar.gz
   pwd 
   ls -la
-  cd /usr/local/go/src/
+  cd /usr/local
   pwd
   ls -la
   export CGO_ENABLED=0
