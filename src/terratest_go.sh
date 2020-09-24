@@ -11,7 +11,10 @@ function goTest {
 else
   echo "Install Go for terratest"
   echo "installing go version 1.14.3..." 
-  apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go 
+  apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go
+  wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+  wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk
+  apk add glibc-2.32-r0.apk
   echo start
   curl -O https://storage.googleapis.com/golang/go1.10.3.linux-amd64.tar.gz
   tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
@@ -23,7 +26,7 @@ else
   echo sab sahi
   cd /usr/local/go/src
   echo 123
-  ./all.bash
+  ./make.bash
   go version
   echo "Install dep"
   curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
