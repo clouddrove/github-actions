@@ -21,6 +21,7 @@ else
   export PATH=$PATH:$GOPATH/bin
   echo sab sahi
   cd /usr/local/go/src
+  echo 123
   ./all.bash
   go version
   echo "Install dep"
