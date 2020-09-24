@@ -20,7 +20,8 @@ else
   export GOPATH=/opt/go/ 
   export PATH=$PATH:$GOPATH/bin
   cd
-  source ~/.profile
+  ls -la
+  source .profile
   echo sab sahi
   cd /usr/local/go/src
   echo 123
