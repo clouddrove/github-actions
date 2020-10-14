@@ -89,7 +89,6 @@ function installTerraform {
   echo "Successfully unzipped Terraform v${tfVersion}"
 }
 
-
 function main {
   # Source the other files to gain access to their functions
   scriptDir=$(dirname ${0})
@@ -101,7 +100,8 @@ function main {
   source ${scriptDir}/tf_output.sh
   source ${scriptDir}/terratest_go.sh
   source ${scriptDir}/file_upload.sh
-  source ${scriptDir}/kuguard.sh
+  source ${scriptDir}/readme.sh
+  source ${scriptDir}/push.sh
 
   parseInputs
   configureCLICredentials
@@ -120,6 +120,9 @@ function main {
       installTerraform
       terraformValidate ${*}
       ;;
+    push)
+      push ${*}
+      ;;
     plan)
       installTerraform
       terraformPlan ${*}
@@ -131,6 +134,9 @@ function main {
     output)
       installTerraform
       terraformOutput ${*}
+      ;;
+    readme)
+      readme ${*}
       ;;
     terratest)
       installTerraform
