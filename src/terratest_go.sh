@@ -13,10 +13,11 @@ function goTest {
   wget -O go.tgz https://golang.org/dl/go1.15.3.linux-amd64.tar.gz
   tar -C /usr/local -xzf go.tgz
   cd /usr/local/go/src/
-  ./make.bash
+  export CGO_ENABLED=1
   export PATH="/usr/local/go/bin:$PATH"
   export GOPATH=/opt/go/
   export PATH=$PATH:$GOPATH/bin
+  ./make.bash
   go version
   fi
 
@@ -27,4 +28,7 @@ function goTest {
   else
   go get -v -t -d ./...
   fi
+
+  echo "run terratest"
+  go test  --timeout 15000m
 }
