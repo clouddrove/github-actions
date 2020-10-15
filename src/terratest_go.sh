@@ -28,6 +28,6 @@ function goTest {
   go get -v -t -d ./...
   fi
 
-  echo "run terratest"
+  echo "teratest: info: teratest run configuration  in ${tfWorkingDir}"
   go test  --timeout 15000m
 }
