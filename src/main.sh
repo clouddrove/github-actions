@@ -102,6 +102,8 @@ function main {
   source ${scriptDir}/terratest_go.sh
   source ${scriptDir}/file_upload.sh
   source ${scriptDir}/kuguard.sh
+  source ${scriptDir}/readme.sh
+  source ${scriptDir}/push.sh
 
   parseInputs
   configureCLICredentials
