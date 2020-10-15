@@ -12,11 +12,11 @@ function goTest {
   echo "Install Go for terratest"
   wget -O go.tgz https://golang.org/dl/go1.15.3.linux-amd64.tar.gz
   tar -C /usr/local -xzf go.tgz
-  cd /usr/local/go/src/
   export CGO_ENABLED=1
   export PATH="/usr/local/go/bin:$PATH"
   export GOPATH=/opt/go/
   export PATH=$PATH:$GOPATH/bin
+  cd /usr/local/go/src/
   ./make.bash
   go version
   fi
