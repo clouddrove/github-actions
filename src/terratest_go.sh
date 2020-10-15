@@ -1,6 +1,7 @@
 #!/bin/bash
 #this is using for terraform  terratest
 function goTest {
+  echo "testing pwd" && pwd
 
   echo "install the terratest dependencies"
   apk add -d --update --no-cache go curl gcc build-base
@@ -29,5 +30,6 @@ function goTest {
   fi
 
   echo "teratest: info: teratest run configuration  in ${tfWorkingDir}"
+  pwd
   go test  --timeout 15000m
 }
