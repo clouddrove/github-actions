@@ -116,6 +116,12 @@ function main {
       installTerraform
       terraformInit ${*}
       ;;
+    push)
+      push ${*}
+      ;;
+    readme)
+      readme ${*}
+      ;;
     validate)
       installTerraform
       terraformValidate ${*}
