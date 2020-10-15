@@ -15,9 +15,6 @@ function hasPrefix {
   esac
 }
 
-#Static Version of Terraform
-INPUT_TF_ACTIONS_VERSION=0.13.0
-
 function parseInputs {
   # Required inputs
   if [ "${INPUT_TF_ACTIONS_VERSION}" != "" ]; then
@@ -27,8 +24,8 @@ function parseInputs {
     exit 1
   fi
 
-  if [ "${INPUT_ACTIONS_SUBCOMMAND}" != "" ]; then
-    Subcommand=${INPUT_ACTIONS_SUBCOMMAND}
+  if [ "${INPUT_TF_ACTIONS_SUBCOMMAND}" != "" ]; then
+    tfSubcommand=${INPUT_TF_ACTIONS_SUBCOMMAND}
   else
     echo "Input terraform_subcommand cannot be empty"
     exit 1
@@ -36,7 +33,7 @@ function parseInputs {
 
   # Optional inputs
   tfWorkingDir="."
-  if [ "${INPUT_TF_ACTIONS_WORKING_DIR}" != "" ] || [ "${INPUT_TF_ACTIONS_WORKING_DIR}" != "." ]; then
+  if [[ -n "${INPUT_TF_ACTIONS_WORKING_DIR}" ]]; then
     tfWorkingDir=${INPUT_TF_ACTIONS_WORKING_DIR}
   fi
 
@@ -53,6 +50,16 @@ function parseInputs {
   tfCLICredentialsToken=""
   if [ "${INPUT_TF_ACTIONS_CLI_CREDENTIALS_TOKEN}" != "" ]; then
     tfCLICredentialsToken=${INPUT_TF_ACTIONS_CLI_CREDENTIALS_TOKEN}
+  fi
+
+  tfFmtWrite=0
+  if [ "${INPUT_TF_ACTIONS_FMT_WRITE}" == "1" ] || [ "${INPUT_TF_ACTIONS_FMT_WRITE}" == "true" ]; then
+    tfFmtWrite=1
+  fi
+
+  tfWorkspace="default"
+  if [ -n "${TF_WORKSPACE}" ]; then
+    tfWorkspace="${TF_WORKSPACE}"
   fi
 }
 
