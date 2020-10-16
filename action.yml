@@ -5,6 +5,9 @@ branding:
   icon: 'terminal'
   color: 'yellow'
 inputs:
+  github_token:
+    description: 'Github token for cloning.'
+    required: true
   tf_actions_subcommand:
     description: 'Terraform subcommand to execute.'
     required: false
@@ -30,3 +33,5 @@ outputs:
 runs:
   using: 'docker'
   image: './Dockerfile'
+  args:
+    - ${{ inputs.github_token }} # args for the readme.sh

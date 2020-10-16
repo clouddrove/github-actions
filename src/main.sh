@@ -16,7 +16,7 @@ function hasPrefix {
 }
 
 #Static Version of Terraform
-INPUT_TF_ACTIONS_VERSION=0.13.0
+INPUT_TF_ACTIONS_VERSION=0.13.4
 
 function parseInputs {
   # Required inputs
@@ -102,6 +102,8 @@ function main {
   source ${scriptDir}/terratest_go.sh
   source ${scriptDir}/file_upload.sh
   source ${scriptDir}/kuguard.sh
+  source ${scriptDir}/readme.sh
+  source ${scriptDir}/push.sh
 
   parseInputs
   configureCLICredentials
@@ -115,6 +117,14 @@ function main {
     init)
       installTerraform
       terraformInit ${*}
+      ;;
+    push)
+      installTerraform
+      push ${*}
+      ;;
+    readme)
+      installTerraform
+      readme ${*}
       ;;
     validate)
       installTerraform
