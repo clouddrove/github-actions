@@ -28,6 +28,7 @@ function goTest {
   fi
 
   echo "teratest: info: teratest run configuration  in ${tfWorkingDir}"
-  cd ${tfWorkingDir}
+  cd /github/workspace
+  cd  ${tfWorkingDir}
   go test  --timeout 15000m
 }
