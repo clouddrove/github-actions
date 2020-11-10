@@ -1,6 +1,8 @@
 #!/bin/bash
 #this is using for terraform  terratest
 function goTest {
+
+  export DIGITALOCEAN_TOKEN=$DO_TOKEN
   echo "install the terratest dependencies"
   apk add -d --update --no-cache go curl gcc build-base
 
