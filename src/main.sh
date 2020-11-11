@@ -104,6 +104,7 @@ function main {
   source ${scriptDir}/kuguard.sh
   source ${scriptDir}/readme.sh
   source ${scriptDir}/push.sh
+  source ${scriptDir}/login_do.sh
 
   parseInputs
   configureCLICredentials
@@ -144,6 +145,11 @@ function main {
       ;;
     terratest)
       installTerraform
+      goTest ${*}
+      ;;
+    terratest_do)
+      installTerraform
+      doLogin
       goTest ${*}
       ;;
     file_upload)
