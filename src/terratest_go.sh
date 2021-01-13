@@ -10,7 +10,7 @@ function goTest {
     echo exists
 else
 
- wget https://dl.google.com/go/go1.14.3.src.tar.gz && tar -C /usr/local -xzf go$GOLANG_VERSION.src.tar.gz
+ wget https://dl.google.com/go/go1.14.3.src.tar.gz && tar -C /usr/local -xzf go1.14.3.src.tar.gz
  cd /usr/local/go/src && ./make.bash
  export  PATH=$PATH:/usr/local/go/bin
  rm go$GOLANG_VERSION.src.tar.gz
