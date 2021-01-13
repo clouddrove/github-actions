@@ -3,15 +3,20 @@
 function goTest {
 
   echo "install the terratest dependencies"
-  apk add -d --update --no-cache go gcc build-base
+  apk add -d --update --no-cache go gcc bash musl-dev openssl-dev ca-certificates && update-ca-certificates
 
   echo "Install Go for terratest"
   if [ -x /github/home/.go ]; then
     echo exists
 else
-  echo "Install Go for terratest"
-  wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh \
- | bash -s -- --version 1.15.6
+
+ wget https://dl.google.com/go/go1.14.3.src.tar.gz && tar -C /usr/local -xzf go$GOLANG_VERSION.src.tar.gz
+ cd /usr/local/go/src && ./make.bash
+ export  PATH=$PATH:/usr/local/go/bin
+ rm go$GOLANG_VERSION.src.tar.gz
+
+#we delete the apk installed version to avoid conflict
+   apk del go
 
   echo "Install Go package fo terratest"
   go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
