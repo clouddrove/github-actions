@@ -3,7 +3,7 @@
 function goTest {
 
   echo "install the terratest dependencies"
-  apk add -d --update --no-cache go gcc bash musl-dev openssl-dev ca-certificates && update-ca-certificates
+  apk add -d --update --no-cache go gcc bash musl-dev openssl-dev ca-certificates tar && update-ca-certificates
 
   echo "Install Go for terratest"
   if [ -x /github/home/.go ]; then
