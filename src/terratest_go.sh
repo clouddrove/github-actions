@@ -18,7 +18,7 @@ else
    apk del go
 
   echo "Install Go package fo terratest"
-  go get github.com/gruntwork-io/terratest/modules/terraform github.com/stretchr/testify/assert
+  go get  github.com/gruntwork-io/terratest/modules/terraform
 fi
 
   # Gather the output of `teratest`.
