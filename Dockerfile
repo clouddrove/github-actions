@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM golang:1.14-alpine
 
 RUN ["/bin/sh", "-c", "apk add --update --no-cache bash ca-certificates rsync curl make git go jq openssh file"]
 
