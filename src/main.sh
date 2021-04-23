@@ -16,7 +16,7 @@ function hasPrefix {
 }
 
 #Static Version of Terraform
-INPUT_TF_ACTIONS_VERSION=0.14.4
+INPUT_TF_ACTIONS_VERSION=0.15.0
 
 function parseInputs {
   # Required inputs
