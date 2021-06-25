@@ -100,11 +100,9 @@ function main {
   source ${scriptDir}/tf_apply.sh
   source ${scriptDir}/tf_output.sh
   source ${scriptDir}/terratest_go.sh
-  source ${scriptDir}/file_upload.sh
-  source ${scriptDir}/kuguard.sh
   source ${scriptDir}/readme.sh
   source ${scriptDir}/push.sh
-  source ${scriptDir}/login_do.sh
+  source ${scriptDir}/do_login.sh
 
   parseInputs
   configureCLICredentials
@@ -151,10 +149,6 @@ function main {
       installTerraform
       doLogin
       goTest ${*}
-      ;;
-    file_upload)
-      builBinary
-      fileUpload ${*}
       ;;
     *)
       echo "Error: Must provide a valid value for subcommand"

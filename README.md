@@ -44,25 +44,25 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@master
 
-      - name: 'Terraform Format'
+      - name: 'Terraform format'
         uses: clouddrove/github-actions@master
         with:
           actions_subcommand: 'fmt'
 
-      - name: 'Terraform Init fot public-private-subnet'
+      - name: 'Terraform init fot public-private-subnet'
         uses: clouddrove/github-actions@master
         with:
           actions_subcommand: 'init'
           tf_actions_working_dir: ./_example/public-private-subnet    
       
-      - name: Configure AWS Credentials
+      - name: Configure aws credentials
         uses: clouddrove/configure-aws-credentials@v1
         with:
          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws-region: us-east-2      
      
-      - name: 'Terraform Plan For public-private-subnet'
+      - name: 'Terraform plan for public-private-subnet'
         uses: clouddrove/github-actions@master
         with:
           actions_subcommand: 'plan'
@@ -70,7 +70,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 'Terratest For public-private-subnet'
+      - name: 'Terratest for public-private-subnet'
         uses: clouddrove/github-actions@master
         with:
           actions_subcommand: 'terratest'
@@ -78,7 +78,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 'Terratest For public-subnet'
+      - name: 'Terratest for public-subnet'
         uses: clouddrove/github-actions@master
         with:
           actions_subcommand: 'terratest'
@@ -86,13 +86,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
-      - name: 'Slack Notification'
+      - name: 'Slack notification'
         uses: clouddrove/action-slack@v2
         with:
           status: ${{ job.status }}
           fields: repo,author
-          author_name: 'Clouddrove'
+          author_name: 'CloudDrove'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
