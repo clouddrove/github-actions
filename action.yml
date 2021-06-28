@@ -1,9 +1,9 @@
 name: 'Terraform GitHub Actions'
-description: 'Runs Terraform commands via GitHub Actions.'
-author: 'HashiCorp, Inc. Terraform Team <terraform@hashicorp.com>'
+description: 'Runscommands via GitHub Actions.'
+author: 'CloudDrove, Inc. Team <hello@clouddrove.com>'
 branding:
   icon: 'terminal'
-  color: 'yellow'
+  color: 'grey'
 inputs:
   github_token:
     description: 'Github token for cloning.'
@@ -15,10 +15,10 @@ inputs:
     description: 'Terraform version to install.'
     required: false
   tf_actions_cli_credentials_hostname:
-    description: 'Hostname for the CLI credentials file.'
+    description: 'Hostname for the cli credentials file.'
     default: 'app.terraform.io'
   tf_actions_cli_credentials_token:
-    description: 'Token for the CLI credentials file.'
+    description: 'Token for the cli credentials file.'
   tf_actions_comment:
     description: 'Whether or not to comment on pull requests.'
     default: true
@@ -27,9 +27,9 @@ inputs:
     default: '.'
 outputs:
   tf_actions_output:
-    description: 'The Terraform outputs in JSON format.'
+    description: 'The terraform outputs in JSON format.'
   tf_actions_plan_has_changes:
-    description: 'Whether or not the Terraform plan contained changes.'
+    description: 'Whether or not the terraform plan contained changes.'
 runs:
   using: 'docker'
   image: './Dockerfile'
