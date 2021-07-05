@@ -3,7 +3,7 @@
 function goTest {
 
   echo "initialize Go mod"
-  go mod init
+  go mod init terratest
 
   echo "Install Go package fo terratest"
   go get  github.com/gruntwork-io/terratest/modules/terraform
