@@ -2,7 +2,11 @@
 #this is using for terraform  terratest
 function goTest {
 
+  echo "initialize Go mod"
+  go mod init terratest
+
   echo "Install Go package fo terratest"
+  go get github.com/stretchr/testify/assert
   go get  github.com/gruntwork-io/terratest/modules/terraform
 
   # Gather the output of `teratest`.
