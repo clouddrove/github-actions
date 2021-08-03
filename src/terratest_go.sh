@@ -11,5 +11,6 @@ function goTest {
 
   # Gather the output of `teratest`.
   echo "teratest: info: teratest run configuration  in ${tfWorkingDir}"
+  export DIGITALOCEAN_TOKEN=${DO_TOKEN}
   go test -run Test --timeout 150m
 }
