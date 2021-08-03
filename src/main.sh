@@ -147,7 +147,6 @@ function main {
       ;;
     terratest_do)
       installTerraform
-      doLogin
       goTest ${*}
       ;;
     *)
