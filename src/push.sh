@@ -2,6 +2,7 @@
 
 function push {
   cd /github/workspace/new-workflow
+  git config --global --add safe.directory "$GITHUB_WORKSPACE"
   git config --global user.email "anmol+ci@clouddrove.com."
   git config --global user.name "clouddrove-ci"
   git add . && git commit -m "update README.md"
