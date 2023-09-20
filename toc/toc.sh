@@ -5,10 +5,8 @@ USERNAME=$3
 EMAIL=$4
 git config --global user.name  "$USERNAME"
 git config --global user.email "$EMAIL"
-
 # Add an exception for the /github/workspace/new-workflow directory
 git config --global --add safe.directory /github/workspace/new-workflow
-
 export GITHUB_ACCESS_TOKEN=$1
 MODULES=$2
 mkdir -p new-workflow
@@ -20,5 +18,5 @@ cd /github/workspace/new-workflow
 make toc/deps
 make toc include_modules="$MODULES"
 git add .
-git commit -m "feat: test toc"
+git commit -m "feat: update toc readme file"
 git push

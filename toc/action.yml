@@ -1,6 +1,6 @@
 # action.yml
-name: 'Terraform security scan'
-description: 'Scan your terraform code with tfsec'
+name: 'toc'
+description: 'updating toc readme'
 inputs:
   github-token:
     description: 'GitHub Token'
@@ -9,17 +9,17 @@ inputs:
     description: 'Comma-separated list of modules to include'
     required: false
   username:
-    description: 'Set user-name'
+    description: 'Set git user-name'
     required: false
   email:
-    description: 'Set Email id'
+    description: 'Set git Email id'
     required: false
     
 runs:
   using: 'docker'
   image: './Dockerfile'
   args:
-    - ${{ inputs.github-token }} # args for the readme.sh
+    - ${{ inputs.github-token }}
     - ${{ inputs.modules }}
     - ${{ inputs.username }}
     - ${{ inputs.email }}
