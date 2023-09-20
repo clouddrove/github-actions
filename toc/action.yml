@@ -1,6 +1,6 @@
 # action.yml
-name: 'toc'
-description: 'create toc readme file'
+name: 'Terraform security scan'
+description: 'Scan your terraform code with tfsec'
 inputs:
   github-token:
     description: 'GitHub Token'
@@ -8,7 +8,6 @@ inputs:
   modules:
     description: 'Comma-separated list of modules to include'
     required: false
-    default: 'terraform-aws,terraform-azure,terraform-gcp,docker,ansible,tools'
   username:
     description: 'Set user-name'
     required: false
@@ -18,7 +17,7 @@ inputs:
     
 runs:
   using: 'docker'
-  image: './toc/Dockerfile'
+  image: './Dockerfile'
   args:
     - ${{ inputs.github-token }} # args for the readme.sh
     - ${{ inputs.modules }}
