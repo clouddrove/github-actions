@@ -2,9 +2,9 @@
 name: 'toc'
 description: 'updating toc readme'
 inputs:
-  # github-token:
-  #   description: 'GitHub Token'
-  #   required: true
+  github-token:
+    description: 'GitHub Token'
+    required: true
   modules:
     description: 'Comma-separated list of modules to include'
     required: false
@@ -14,16 +14,16 @@ inputs:
   email:
     description: 'Set git Email id'
     required: false
-secrets:
-  github-token:
-    description: 'GitHub Token'
-    required: true
+# secrets:
+#   github-token:
+#     description: 'GitHub Token'
+#     required: true
     
 runs:
   using: 'docker'
   image: './Dockerfile'
   args:
-    - ${{ secrets.github-token }}
+    - ${{ inputs.github-token }}
     - ${{ inputs.modules }}
     - ${{ inputs.username }}
     - ${{ inputs.email }}
