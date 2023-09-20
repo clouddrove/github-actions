@@ -1,0 +1,26 @@
+# action.yml
+name: 'toc'
+description: 'create toc readme file'
+inputs:
+  github-token:
+    description: 'GitHub Token'
+    required: true
+  modules:
+    description: 'Comma-separated list of modules to include'
+    required: false
+    default: 'terraform-aws,terraform-azure,terraform-gcp,docker,ansible,tools'
+  username:
+    description: 'Set user-name'
+    required: false
+  email:
+    description: 'Set Email id'
+    required: false
+    
+runs:
+  using: 'docker'
+  image: './toc/Dockerfile'
+  args:
+    - ${{ inputs.github-token }} # args for the readme.sh
+    - ${{ inputs.modules }}
+    - ${{ inputs.username }}
+    - ${{ inputs.email }}
