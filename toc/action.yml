@@ -14,12 +14,16 @@ inputs:
   email:
     description: 'Set git Email id'
     required: false
+secrets:
+  github-token:
+    description: 'GitHub Token'
+    required: true
     
 runs:
   using: 'docker'
   image: './Dockerfile'
   args:
-    - ${{ inputs.github-token }}
+    - ${{ secrets.github-token }}
     - ${{ inputs.modules }}
     - ${{ inputs.username }}
     - ${{ inputs.email }}
