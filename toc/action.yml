@@ -2,9 +2,9 @@
 name: 'toc'
 description: 'updating toc readme'
 inputs:
-  github-token:
-    description: 'GitHub Token'
-    required: true
+  # github-token:
+  #   description: 'GitHub Token'
+  #   required: true
   modules:
     description: 'Comma-separated list of modules to include'
     required: false
