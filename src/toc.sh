@@ -1,5 +1,7 @@
 #!/bin/bash
 
+function readme {
+
 git config --global user.name  clouddrove.ca
 git config --global user.email "clouddrove.ca@gmail.com"
 # Add an exception for the /github/workspace/new-workflow directory
@@ -17,3 +19,5 @@ make toc include_modules="$MODULES"
 git add .
 git commit -m "feat: update toc readme file"
 git push
+
+}
