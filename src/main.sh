@@ -102,7 +102,7 @@ function main {
   source ${scriptDir}/terratest_go.sh
   source ${scriptDir}/readme.sh
   source ${scriptDir}/push.sh
-  source ${scriptDir}/toc
+  source ${scriptDir}/toc.sh
 
   parseInputs
   configureCLICredentials
