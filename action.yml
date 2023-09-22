@@ -5,7 +5,7 @@ branding:
   icon: 'terminal'
   color: 'grey'
 inputs:
-  github-token:
+  github_token:
     description: 'Github token for cloning.'
     required: true
   tf_actions_subcommand:
@@ -43,7 +43,7 @@ runs:
   using: 'docker'
   image: './Dockerfile'
   args:
-    - ${{ inputs.github-token }}
+    - ${{ inputs.github_token }}
     - ${{ inputs.modules }}
     - ${{ inputs.username }}
     - ${{ inputs.email }}
