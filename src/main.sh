@@ -147,7 +147,7 @@ function main {
       ;;
     toc)
       installTerraform
-      goTest ${*}
+      toc ${*}
       ;;
     terratest_do)
       installTerraform
