@@ -5,7 +5,7 @@ branding:
   icon: 'terminal'
   color: 'grey'
 inputs:
-  github_token:
+  github-token:
     description: 'Github token for cloning.'
     required: true
   tf_actions_subcommand:
