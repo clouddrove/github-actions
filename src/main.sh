@@ -145,13 +145,13 @@ function main {
       installTerraform
       goTest ${*}
       ;;
-    terratest_do)
+    toc)
       installTerraform
       goTest ${*}
       ;;
-    toc)
+    terratest_do)
       installTerraform
-      make ${*}
+      goTest ${*}
       ;;
     *)
       echo "Error: Must provide a valid value for subcommand"
