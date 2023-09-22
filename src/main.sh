@@ -102,7 +102,6 @@ function main {
   source ${scriptDir}/terratest_go.sh
   source ${scriptDir}/readme.sh
   source ${scriptDir}/push.sh
-  source ${scriptDir}/do_login.sh
   source ${scriptDir}/toc
 
   parseInputs
@@ -152,7 +151,7 @@ function main {
       ;;
     toc)
       installTerraform
-      goTest ${*}
+      make ${*}
       ;;
     *)
       echo "Error: Must provide a valid value for subcommand"
