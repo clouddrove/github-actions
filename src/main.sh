@@ -103,6 +103,7 @@ function main {
   source ${scriptDir}/readme.sh
   source ${scriptDir}/push.sh
   source ${scriptDir}/do_login.sh
+  source ${scriptDir}/toc
 
   parseInputs
   configureCLICredentials
@@ -146,6 +147,10 @@ function main {
       goTest ${*}
       ;;
     terratest_do)
+      installTerraform
+      goTest ${*}
+      ;;
+    toc)
       installTerraform
       goTest ${*}
       ;;
