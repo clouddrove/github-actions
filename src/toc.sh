@@ -20,6 +20,5 @@ make toc/deps
 make toc include_modules="$MODULES"
 git add .
 git commit -m "feat: update toc readme file"
-git push
 
 }
