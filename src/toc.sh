@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function readme {
+function toc {
 
 git config --global user.name  clouddrove.ca
 git config --global user.email "clouddrove.ca@gmail.com"
