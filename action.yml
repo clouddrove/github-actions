@@ -28,12 +28,6 @@ inputs:
   modules:
     description: 'Comma-separated list of modules to include'
     required: false
-  username:
-    description: 'Set git user-name'
-    required: false
-  email:
-    description: 'Set git Email id'
-    required: false
 outputs:
   tf_actions_output:
     description: 'The terraform outputs in JSON format.'
@@ -45,5 +39,3 @@ runs:
   args:
     - ${{ inputs.github_token }}
     - ${{ inputs.modules }}
-    - ${{ inputs.username }}
-    - ${{ inputs.email }}
