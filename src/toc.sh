@@ -2,8 +2,8 @@
 
 function toc {
 
-git config --global user.name  clouddrove.ca
-git config --global user.email "clouddrove.ca@gmail.com"
+git config --global user.name  clouddrove.ci
+git config --global user.email "clouddrove.ci@gmail.com"
 # Add an exception for the /github/workspace/new-workflow directory
 git config --global --add safe.directory /github/workspace/new-workflow
 export GITHUB_ACCESS_TOKEN=$1
