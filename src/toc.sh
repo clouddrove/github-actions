@@ -13,9 +13,7 @@ cd .. && rsync -av --progress workspace/. /github/workspace/new-workflow --exclu
 cd .. && cd .. && cd ..
 git clone https://$1@github.com/clouddrove/genie.git
 cd genie
-pwd && ls -la
 cd /github/workspace/new-workflow
-pwd && ls -la
 make toc/deps
 make toc include_modules="$MODULES"
 git add .
