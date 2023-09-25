@@ -25,6 +25,9 @@ inputs:
   tf_actions_working_dir:
     description: 'Terraform working directory.'
     default: '.'
+  modules:
+    description: 'Comma-separated list of modules to include'
+    required: false
 outputs:
   tf_actions_output:
     description: 'The terraform outputs in JSON format.'
@@ -34,4 +37,5 @@ runs:
   using: 'docker'
   image: './Dockerfile'
   args:
-    - ${{ inputs.github_token }} # args for the readme.sh
+    - ${{ inputs.github_token }}
+    - ${{ inputs.modules }}
