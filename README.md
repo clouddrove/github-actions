@@ -63,7 +63,7 @@ jobs:
          aws-region: us-east-2      
      
       - name: 'Terraform plan for public-private-subnet'
-        uses: clouddrove/github-actions@master
+        uses: clouddrove/github-actions@9.0.3
         with:
           actions_subcommand: 'plan'
           tf_actions_working_dir: ./_example/public-private-subnet
@@ -71,7 +71,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 'Terratest for public-private-subnet'
-        uses: clouddrove/github-actions@master
+        uses: clouddrove/github-actions@9.0.3
         with:
           actions_subcommand: 'terratest'
           tf_actions_working_dir: ./_test/public-private-subnet
@@ -79,7 +79,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 'Terratest for public-subnet'
-        uses: clouddrove/github-actions@master
+        uses: clouddrove/github-actions@9.0.3
         with:
           actions_subcommand: 'terratest'
           tf_actions_working_dir: ./_test/public-subnet
