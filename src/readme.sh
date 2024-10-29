@@ -23,7 +23,7 @@ function readme {
 
   # Clone the genie repository into a separate directory
   echo "Cloning genie repository..."
-  if ! git clone "https://$GITHUB_ACCESS_TOKEN:$(echo -n x | base64)@github.com/clouddrove/genie.git" new-workflow/genie; then
+  if ! git clone "https://$GITHUB_ACCESS_TOKEN@github.com/clouddrove/genie.git" new-workflow/genie; then
     echo "Error: Failed to clone the genie repository."
     exit 1
   fi
