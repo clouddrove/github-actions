@@ -45,6 +45,15 @@ function readme {
     }
   }
 
+  echo "Checking for required files..."
+  ls -la /github/workspace/new-workflow/genie
+  
+  # Check if README.yaml exists before generating README
+  if [ ! -f /github/workspace/new-workflow/genie/README.yaml ]; then
+    echo "Error: README.yaml not found. Please ensure it exists."
+    exit 1
+  fi
+
   echo "Generating README..."
   make -C /github/workspace/new-workflow/genie readme || {
     echo "Error: Failed to generate README."
