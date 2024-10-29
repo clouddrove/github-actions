@@ -26,4 +26,4 @@ function readme {
 }
 
 # Call the function with your GitHub token
-readme "YOUR_GITHUB_ACCESS_TOKEN"
+readme "YOUR_ACTUAL_GITHUB_ACCESS_TOKEN"
