@@ -15,7 +15,16 @@ function readme {
   # Change to the new-workflow directory
   cd /github/workspace/new-workflow
 
-  # Try installing gomplate and generating README
-  make packages/install/gomplate
-  make readme
+  # Check if gomplate installation is needed
+  if grep -q "packages/install/gomplate" ../../../genie/Makefile; then
+    make packages/install/gomplate || echo "Skipping gomplate installation due to errors."
+  else
+    echo "No gomplate installation target found. Proceeding."
+  fi
+
+  # Attempt to generate README
+  make readme || echo "Failed to generate README. Please check the errors."
 }
+
+# Call the function with your GitHub access token as the argument
+readme YOUR_GITHUB_ACCESS_TOKEN
