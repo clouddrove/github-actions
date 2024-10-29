@@ -9,7 +9,17 @@ function readme {
   export GITHUB_ACCESS_TOKEN=$1
   
   mkdir -p new-workflow
-  if ! rsync -av --progress workspace/. /github/workspace/new-workflow --exclude new-workflow; then
+  echo "Current directory: $(pwd)"
+  echo "Contents of current directory:"
+  ls -la
+
+  # Check if the workspace directory exists
+  if [ ! -d "/github/workspace/workspace" ]; then
+    echo "Error: /github/workspace/workspace does not exist."
+    exit 1
+  fi
+
+  if ! rsync -av --progress /github/workspace/workspace/. /github/workspace/new-workflow --exclude new-workflow; then
     echo "Error: Failed to sync files."
     exit 1
   fi
