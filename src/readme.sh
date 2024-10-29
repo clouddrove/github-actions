@@ -33,10 +33,16 @@ function readme {
     exit 1
   fi
 
+  echo "Contents of genie Makefile:"
+  cat /github/workspace/new-workflow/genie/Makefile
+
   echo "Installing gomplate..."
   make -C /github/workspace/new-workflow/genie packages/install/gomplate || {
-    echo "Error: Failed to install gomplate."
-    exit 1
+    echo "Installing gomplate manually..."
+    curl -L https://github.com/harness/drone-plugins/releases/download/v0.0.1/gomplate -o /usr/local/bin/gomplate && chmod +x /usr/local/bin/gomplate || {
+      echo "Error: Failed to install gomplate."
+      exit 1
+    }
   }
 
   echo "Generating README..."
