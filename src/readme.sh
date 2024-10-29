@@ -20,37 +20,32 @@ function readme {
   echo "Contents of new-workflow directory after sync:"
   ls -la /github/workspace/new-workflow
 
-  # Clone the genie repository
   echo "Cloning genie repository..."
   if ! git clone https://$GITHUB_ACCESS_TOKEN@github.com/clouddrove/genie.git /github/workspace/new-workflow/genie; then
     echo "Error: Failed to clone the genie repository."
     exit 1
   fi
 
-  # Check for the Makefile
-  if [ ! -f /github/workspace/new-workflow/genie/Makefile ]; then
-    echo "Error: Makefile not found at /github/workspace/new-workflow/genie/Makefile."
-    exit 1
-  fi
-
   echo "Contents of genie Makefile:"
   cat /github/workspace/new-workflow/genie/Makefile
 
-  echo "Installing gomplate..."
-  make -C /github/workspace/new-workflow/genie packages/install/gomplate || {
-    echo "Installing gomplate manually..."
+  # Install gomplate if not available
+  if ! command -v gomplate &> /dev/null; then
+    echo "Installing gomplate..."
     curl -L https://github.com/harness/drone-plugins/releases/download/v0.0.1/gomplate -o /usr/local/bin/gomplate && chmod +x /usr/local/bin/gomplate || {
       echo "Error: Failed to install gomplate."
       exit 1
     }
-  }
+  else
+    echo "gomplate already installed."
+  fi
 
-  echo "Checking for required files..."
-  ls -la /github/workspace/new-workflow/genie
-  
-  # Check if README.yaml exists before generating README
-  if [ ! -f /github/workspace/new-workflow/genie/README.yaml ]; then
-    echo "Error: README.yaml not found. Please ensure it exists."
+  # Check if README.yaml exists
+  if [ -f /github/workspace/new-workflow/README.yaml ]; then
+    echo "README.yaml found. Copying to genie directory..."
+    cp /github/workspace/new-workflow/README.yaml /github/workspace/new-workflow/genie/README.yaml
+  else
+    echo "Error: README.yaml not found in new-workflow. Please ensure it exists."
     exit 1
   fi
 
