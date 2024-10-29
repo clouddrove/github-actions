@@ -4,26 +4,18 @@ function readme {
   export GITHUB_ACCESS_TOKEN=$1
   mkdir -p new-workflow
   cd .. && rsync -av --progress workspace/. /github/workspace/new-workflow --exclude new-workflow && cd /github/workspace/new-workflow
-  
-  # Cloning using the working method
-  git clone https://$GITHUB_ACCESS_TOKEN@github.com/clouddrove/genie.git genie
-  
-  cd genie
-  
-  # Check if the gomplate target exists before trying to make it
-  if make packages/install/gomplate; then
-    echo "Gomplate installed successfully."
-  else
-    echo "No rule for packages/install/gomplate, proceeding without installation."
-  fi
-  
-  # Ensure README.yaml exists before attempting to generate README
-  if [[ -f README.yaml ]]; then
-    make readme
-  else
-    echo "README.yaml not found. Please ensure it exists before generating README."
-  fi
-}
 
-# Call the function with your GitHub token
-readme "YOUR_ACTUAL_GITHUB_ACCESS_TOKEN"
+  # Clone the genie repo
+  cd .. && cd .. && cd ..
+  git clone https://$1@github.com/clouddrove/genie.git
+
+  # Copy README.yaml to the genie directory
+  cp /github/workspace/new-workflow/README.yaml /github/workspace/new-workflow/genie/
+
+  # Change to the new-workflow directory
+  cd /github/workspace/new-workflow
+
+  # Try installing gomplate and generating README
+  make packages/install/gomplate
+  make readme
+}
